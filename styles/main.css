@@ -1,6 +1,9 @@
 html {
   font-size: 75px; }
 
+body {
+  overflow: hidden; }
+
 header {
   width: 100%;
   height: 1.92rem;
@@ -61,7 +64,12 @@ article {
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease; }
+    transition: all 0.3s ease;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0); }
 
 #shadow {
   background-color: #000;
@@ -76,7 +84,12 @@ article {
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0); }
 
 #drawer {
   -webkit-transition: all 0.3s ease;
@@ -84,6 +97,11 @@ article {
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
   width: 50%;
   background-color: #fff;
   position: absolute;
@@ -106,7 +124,6 @@ article {
       #drawer article #cancle-ensure #ensure {
         color: #8dda5e; }
   #drawer .choices {
-    height: 1.2rem;
     line-height: 1.2rem;
     font-size: 16px;
     border-bottom: 1px solid #cccccc;
@@ -122,17 +139,24 @@ article {
       -moz-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
-      transition: all 0.3s ease; }
+      transition: all 0.3s ease;
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0); }
   #drawer .details {
     background-color: #eeeeee;
-    display: none; }
+    display: none;
+    width: 100%; }
     #drawer .details .each-choice {
-      padding-left: 0.50667rem;
+      width: 100%;
       background-color: #eeeeee;
       border-bottom: 1px solid #cccccc; }
       #drawer .details .each-choice span {
         color: #444444;
         font-size: 12px;
+        margin-left: 0.50667rem;
         line-height: 1.26667rem; }
       #drawer .details .each-choice i {
         float: right;

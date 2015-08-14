@@ -12,40 +12,59 @@ var shadow = document.getElementById("shadow"),
     details = MyQuery.getClassName("details"),
     cancleBtn = document.getElementById("cancle"),
     ensureBtn = document.getElementById("ensure"),
-    drawer = document.getElementById("drawer");
+    drawer = document.getElementById("drawer"),
+    body = document.getElementsByTagName("body")[0];
 
 var clientWidth = document.documentElement.clientWidth,
-    clientHeight = document.body.clientHeight;
+    clientHeight = document.body.clientHeight,
+    startX, startY;
+MyQuery.addHandler(body, "touchstart", function(event){
+    event = event || window.event;
+    startX = event.touches[0].pageX;
+    startY = event.touches[0].pageY;
+});
 
-    var drawerWidth = drawer.offsetWidth;
-    drawer.style.transform = "translate3d(" + drawerWidth + "px,0, 0)";
+MyQuery.addHandler(body, "touchmove", function(event){
+    event = event || window.event;
+    var touch = event.touches[0],
+        x = touch.pageX,
+        y = touch.pageY;
+    if(x < startX - 10 || x > startX + 10){
+        event.preventDefault();
+    }
+    if(x == startX && y != startY){
+        event.preventDefault();
+    }
+});
+
+
+
+
+
+shadow.style.width = clientWidth + "px";
+shadow.style.height = clientHeight + "px";
+var drawerWidth = drawer.offsetWidth;
+drawer.style.transform = "translate3d(" + drawerWidth + "px,0, 0)";
 //关闭抽屉
 MyQuery.addHandler(cancleBtn, "touchend", function(){
     var drawerWidth = drawer.offsetWidth;
     shadow.style.display = "none";
     drawer.style.transform = "translate3d(" + drawerWidth + "px,0,0)";
 });
+MyQuery.addHandler(shadow, "touchend", function(){
+    var drawerWidth = drawer.offsetWidth;
+    shadow.style.display = "none";
+    var move = "translate3d(" + drawerWidth + "px,0,0)";
+    drawer.style.transform = move;
+    drawer.style.webkitTransformOriginX = move;
+})
 
-//window.onload = function(){
-//    var drawerWidth = drawer.offsetWidth;
-//    drawer.style.transform = "translate3d(" + drawerWidth + "px,0, 0)";
-//    drawer.style.display = "block";
-//}
 //打开抽屉
 MyQuery.addHandler(openDrawer, "touchend", function(){
     drawer.style.transform = "translate3d(0px,0px,0px)";
     shadow.style.display = "block";
 
 });
-
-//开关抽屉
-shadow.style.width = clientWidth + "px";
-shadow.style.height = clientHeight + "px";
-MyQuery.addHandler(shadow, "touchend", function(){
-    var drawerWidth = drawer.offsetWidth;
-    shadow.style.display = "none";
-    drawer.style.transform = "translate3d(" + drawerWidth + "px,0,0)";
-})
 
 //导航栏切换
 for(var i = 0; i < lis.length; i++){
@@ -54,8 +73,7 @@ for(var i = 0; i < lis.length; i++){
         var margin = parseFloat(MyQuery.getObjStyle(navSlide, "marginLeft")) * 2,
             navSlideWidth = navSlide.offsetWidth,
             totalWidth = margin + navSlideWidth;
-        console.log(totalWidth);
-        navSlide.style.transform = "translate(" + totalWidth * this.index + "px)";
+        navSlide.style.transform = "translate3d(" + totalWidth * this.index + "px,0,0)";
     });
 }
 

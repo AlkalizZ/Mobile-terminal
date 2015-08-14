@@ -22,6 +22,9 @@ html {
   #{$property}: $pxValues;
 }
 
+body{
+  overflow: hidden;
+}
 header{
   width: 100%;
   @include remCalc(height,144);
@@ -91,6 +94,11 @@ article{
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
   }
 }
 
@@ -108,6 +116,11 @@ article{
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
 }
 #drawer{
   -webkit-transition: all 0.3s ease;
@@ -115,6 +128,11 @@ article{
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
   width: 50%;
   background-color: #fff;
   position: absolute;
@@ -147,7 +165,6 @@ article{
 
 
   .choices{
-    @include remCalc(height,90);
     @include remCalc(line-height,90);
     font-size: 16px;
     border-bottom: 1px solid #cccccc;
@@ -165,19 +182,26 @@ article{
       -o-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
       transition: all 0.3s ease;
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
     }
   }
   .details{
     background-color: #eeeeee;
     display: none;
+    width: 100%;
 
     .each-choice{
-      @include remCalc(padding-left,38);
+      width: 100%;
       background-color: #eeeeee;
       border-bottom: 1px solid #cccccc;
       span{
         color: #444444;
         font-size: 12px;
+        @include remCalc(margin-left,38);
         @include remCalc(line-height,95);
       }
       i{
@@ -336,8 +360,6 @@ article{
       .second-li{
         border-style: solid;
         border-color: #cccccc;
-        //@include remCalc(border-left-width, 1);
-        //@include remCalc(border-right-width, 1);
         border-left-width: 1px;
         border-right-width: 1px;
         border-top: 0;
