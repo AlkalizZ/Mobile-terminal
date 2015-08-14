@@ -1,8 +1,8 @@
 html {
   font-size: 75px; }
 
-body {
-  overflow: hidden; }
+html {
+  overflow-x: hidden; }
 
 header {
   width: 100%;

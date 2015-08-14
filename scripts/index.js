@@ -20,19 +20,16 @@ var clientWidth = document.documentElement.clientWidth,
     startX, startY;
 MyQuery.addHandler(body, "touchstart", function(event){
     event = event || window.event;
-    startX = event.touches[0].pageX;
-    startY = event.touches[0].pageY;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
 });
 
 MyQuery.addHandler(body, "touchmove", function(event){
     event = event || window.event;
     var touch = event.touches[0],
-        x = touch.pageX,
-        y = touch.pageY;
+        x = touch.clientX,
+        y = touch.clientY;
     if(x < startX - 10 || x > startX + 10){
-        event.preventDefault();
-    }
-    if(x == startX && y != startY){
         event.preventDefault();
     }
 });
